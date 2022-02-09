@@ -40,9 +40,31 @@ export const getArticle = slug => {
   })
 }
 
+export const deleteArticle = slug => {
+  return request({
+    method: 'DELETE',
+    url: `/articles/${slug}`,
+  })
+}
+
 export const getComments = slug => {
   return request({
     method: 'GET',
     url: `/articles/${slug}/comments`
+  })
+}
+
+export const postComment = data => {
+  return request({
+    method: 'POST',
+    url: `/articles/${data.slug}/comments`,
+    data
+  })
+}
+
+export const deleteComment = data => {
+  return request({
+    method: 'DELETE',
+    url: `/articles/${data.slug}/comments/${data.id}`,
   })
 }

@@ -9,6 +9,9 @@ export const state = () => {
 export const mutations = {
   setUser (state, data) {
     state.user = data
+  },
+  setUserNull (state) {
+    state.user = null
   }
 }
 
