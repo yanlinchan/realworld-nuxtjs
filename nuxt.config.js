@@ -25,8 +25,13 @@ module.exports = {
               component: resolve(__dirname, 'pages/login/')
             },
             {
-              path: '/profile/:username',
+              path: '/profile/:username/:page?',
               name: 'profile',
+              component: resolve(__dirname, 'pages/profile/')
+            },
+            {
+              path: '/profile/favorites/:username/:page?',
+              name: 'profile-favorites',
               component: resolve(__dirname, 'pages/profile/')
             },
             {
@@ -45,7 +50,12 @@ module.exports = {
               component: resolve(__dirname, 'pages/article/')
             },
           ]
-        }
+        },
+        {
+          path: '*', // 默认子路由
+          name: '404',
+          component: resolve(__dirname, 'pages/layout/error.vue')
+        },
       ])
     }
   },

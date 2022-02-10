@@ -96,7 +96,7 @@ export default {
     ...mapMutations(['setUserNull']),
     logout() {
       this.setUserNull()
-      Cookie.set('user', null)
+      Cookie.remove('user')
       this.$router.push('/')
     },
     async submitForm() {
@@ -108,7 +108,7 @@ export default {
         }
         const { data } = await update({ user: updatedUser })
         this.$store.commit('setUser', data.user)
-        Cookie.set('user', data.user)
+        Cookie.set('user', data.user, { expires: 7 })
       } catch (err) {
         this.errors = err.response.data.errors
       } finally {

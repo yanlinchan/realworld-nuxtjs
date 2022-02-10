@@ -101,7 +101,7 @@ export default {
           })
 
         this.$store.commit('setUser', data.user)
-        Cookie.set('user', data.user)
+        Cookie.set('user', data.user, { expires: 7 })
         this.$router.push('/')
       } catch (err) {
         this.errors = err.response.data.errors

@@ -62,7 +62,7 @@
         </ul>
       </div>
     </nav>
-    <nuxt-child />
+    <nuxt-child :key="$route.fullPath" />
     <footer>
       <div class="container">
         <nuxt-link
