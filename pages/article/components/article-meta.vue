@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="article-meta">
-      <a href>
+      <nuxt-link :to="{ name: 'profile', params: { username: article.author.username } }">
         <img :src="article.author.image" />
-      </a>
+      </nuxt-link>
       <div class="info">
-        <a
+        <nuxt-link
           class="author"
-          href
-        >{{ article.author.username }}</a>
+          :to="{ name: 'profile', params: { username: article.author.username } }"
+        >{{ article.author.username }}</nuxt-link>
         <span class="date">{{ article.createdAt | date('MMM DD, YYYY') }}</span>
       </div>
       <template v-if="createdByCurrentUser">
