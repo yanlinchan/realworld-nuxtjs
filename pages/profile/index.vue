@@ -184,6 +184,9 @@ export default {
         routeName: route.name
       }
     } catch (error) {
+      return {
+        profile: false
+      }
     }
   },
 

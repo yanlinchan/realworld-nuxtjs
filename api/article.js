@@ -33,6 +33,22 @@ export const deleteFavorite = slug => {
   })
 }
 
+export const addArticle = data => {
+  return request({
+    method: 'POST',
+    url: `/articles`,
+    data
+  })
+}
+
+export const updateArticle = data => {
+  return request({
+    method: 'PUT',
+    url: `/articles/${data.slug}`,
+    data
+  })
+}
+
 export const getArticle = slug => {
   return request({
     method: 'GET',

@@ -22,10 +22,10 @@ export default ({ store, redirect }) => {
     return Promise.reject(error)
   })
 
-  request.interceptors.response.use(function (config) {
-    return config
-  }, function (error) {
-    redirect('/')
-    return
-  })
+  // request.interceptors.response.use(function (config) {
+  //   return config
+  // }, function (error) {
+  //   redirect('/')
+  //   return
+  // })
 }

@@ -1,14 +1,14 @@
 <template>
   <div class="article-page">
     <div class="banner">
-      <div class="container">
+      <div class="container" v-if="article">
         <h1>{{ article.title }}</h1>
 
-        <article-meta :article="article"></article-meta>
+        <article-meta v-if="article" :article="article"></article-meta>
       </div>
     </div>
 
-    <div class="container page">
+    <div class="container page" v-if="article">
       <div class="row article-content">
         <div
           class="col-md-12"
@@ -18,11 +18,11 @@
 
       <hr />
 
-      <div class="article-actions">
+      <div class="article-actions" v-if="article">
         <article-meta :article="article"></article-meta>
       </div>
 
-      <article-comment :article="article"></article-comment>
+      <article-comment v-if="article" :article="article"></article-comment>
     </div>
   </div>
 </template>
@@ -39,19 +39,30 @@ export default {
     ArticleComment,
   },
   async asyncData({ params }) {
-    const { data } = await getArticle(params.slug)
-    const { article } = data
-    const md = new Markdownit()
-    article.body = md.render(article.body)
-    return {
-      article: article
+    try {
+      const { data } = await getArticle(params.slug)
+      const { article } = data
+      const md = new Markdownit()
+      article.body = md.render(article.body)
+      return {
+        article: article
+      }
+    } catch (error) {
+
+      return {
+        article: null
+      }
     }
   },
   head() {
     return {
-      title: `${this.article.title} - RealWord`,
+      title: `${this.article ? this.article.title + '-' : ''}RealWord`,
       meta: [
-        { hid: 'description', name: 'description', content: this.article.description }
+        { 
+          hid: 'description',
+          name: 'description',
+          content: this.article ? this.article.description : ''
+        }
       ]
     }
   }
