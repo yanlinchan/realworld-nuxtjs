@@ -81,9 +81,9 @@ export default {
   data() {
     return {
       user: {
-        username: '陈延林',
+        // username: '陈延林',
         email: 'cyl468520253@gmail.com',
-        password: 'CYi864565'
+        password: 'cyl468520253@gmail.com'
       },
       errors: {}
     }
